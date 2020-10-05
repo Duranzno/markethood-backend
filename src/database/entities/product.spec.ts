@@ -13,6 +13,6 @@ test.before(async () => {
 test.serial("Basic Product Creation", async t => {
   const product = await Product.create({ title: "Product", status: ProductStatus.finished, price: [100] })
   const p = await product.save()
-  t.deepEqual(p.title, "Product2", 'message');
+  t.deepEqual(p.title, "Product", 'message');
 })
 

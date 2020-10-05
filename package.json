@@ -38,6 +38,17 @@
   "engines": {
     "node": ">=10"
   },
+  "dependencies": {
+    "@typegoose/typegoose": "^7.4.1",
+    "@types/graphql": "^14.5.0",
+    "apollo-server": "^2.18.2",
+    "class-validator": "^0.12.2",
+    "graphql": "^15.3.0",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.0.0"
+  },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
@@ -46,6 +57,8 @@
     "@types/node": "^14.11.2",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
+    "apollo-server-testing": "^2.18.2",
+    "apollo-server-types": "^0.6.0",
     "ava": "^3.12.1",
     "codecov": "^3.5.0",
     "cspell": "^4.1.0",
@@ -98,19 +111,6 @@
     "singleQuote": true
   },
   "nyc": {
-    "extends": "@istanbuljs/nyc-config-typescript",
-    "include": "src",
-    "exclude": [
-      "**/*.spec.js"
-    ]
-  },
-  "dependencies": {
-    "@typegoose/typegoose": "^7.4.1",
-    "class-validator": "^0.12.2",
-    "graphql": "^15.3.0",
-    "mongodb": "^3.6.2",
-    "mongoose": "^5.10.7",
-    "reflect-metadata": "^0.1.13",
-    "type-graphql": "^1.0.0"
+    "extends": "@istanbuljs/nyc-config-typescript"
   }
 }

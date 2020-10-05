@@ -1,13 +1,13 @@
 // require("dotenv").config();
 
-import { getApolloConfig, setupServer } from "./graphql"
+import { getApolloConfig, setupServer } from './graphql';
 
 async function run() {
   try {
-    const config = getApolloConfig()
-    setupServer(config)
+    const config = getApolloConfig();
+    setupServer(config);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
-run()
+run();

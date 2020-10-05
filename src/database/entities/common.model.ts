@@ -2,8 +2,8 @@
 // import { prop } from '@typegoose/typegoose';
 
 export enum ProductStatus {
-  on_going = "on_going",
-  finished = "finished",
+  on_going = 'on_going',
+  finished = 'finished',
 }
 // export enum AllowedCurrencies {
 //   USD = "USD",

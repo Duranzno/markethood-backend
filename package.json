@@ -111,6 +111,9 @@
     "singleQuote": true
   },
   "nyc": {
-    "extends": "@istanbuljs/nyc-config-typescript"
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "exclude": [
+      "**/*.spec.js"
+    ]
   }
 }

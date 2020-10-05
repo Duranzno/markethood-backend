@@ -4,7 +4,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 
 import { ProductStatus } from './common.model';
 import { ProductClass } from './product.model';
-const mongo = new MongoMemoryServer();
+const mongo = new MongoMemoryServer({ binary: { version: "4.4.1" } });
 const Product = getModelForClass(ProductClass);
 test.before(async () => {
   const uri = await mongo.getUri();

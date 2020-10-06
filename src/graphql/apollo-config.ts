@@ -1,5 +1,8 @@
 import { Config, gql } from 'apollo-server';
-
+/**
+ *  This is the initialization of the ApolloConfig that takes the resolvers and classes made by typegoose
+ *  @returns ApolloConfig
+ */
 export const getApolloConfig = (): Config => ({
   typeDefs: gql`
     # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.

@@ -1,6 +1,9 @@
 // import { ObjectType, Field } from 'type-graphql';
 // import { prop } from '@typegoose/typegoose';
 
+/**
+ * These are all the possible states the product can be in
+ */
 export enum ProductStatus {
   on_going = 'on_going',
   finished = 'finished',

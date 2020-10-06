@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { prop } from '@typegoose/typegoose';
+import { getModelForClass, prop } from '@typegoose/typegoose';
 import { ObjectId } from 'mongodb';
 import { ArgsType, Field, ObjectType } from 'type-graphql';
 
@@ -30,3 +30,4 @@ export class ProductClass {
   @prop({ type: () => [Number] })
   public price?: number[];
 }
+export const ProductModel = getModelForClass(ProductClass);

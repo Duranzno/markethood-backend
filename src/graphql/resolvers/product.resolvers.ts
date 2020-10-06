@@ -7,15 +7,13 @@ import {
   Resolver,
 } from 'type-graphql';
 
-import { ProductClass, ProductStatus } from '../../database';
+import { ProductClass, ProductModel } from '../../database';
 
 @Resolver(() => ProductClass)
 export class ProductQuery {
   @Query(() => [ProductClass])
   async products() {
-    return await [
-      { title: 'Title', price: [], status: ProductStatus.on_going },
-    ];
+    return await ProductModel.find();
   }
 
   // @Query(() => Product)
@@ -30,7 +28,7 @@ export class ProductQuery {
 export class ProductMutation {
   @Mutation(() => ProductClass)
   async registerProduct(@Args() product: ProductClass) {
-    return product; //await { title: "Title", price: [], status: ProductStatus.on_going }
+    return await (await ProductModel.create(product)).save();
   }
 
   // @Mutation(() => Product)

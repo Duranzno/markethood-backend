@@ -19,6 +19,7 @@
         "markethood",
         "Middlewares",
         "mkdir",
+        "mongod",
         "mongodb",
         "prettierignore",
         "sandboxed",

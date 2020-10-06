@@ -11,7 +11,7 @@ import { getApolloConfig, setupServer } from './graphql';
 
 async function run() {
   try {
-    const config = getApolloConfig();
+    const config = await getApolloConfig();
     setupServer(config);
   } catch (error) {
     console.error(error);

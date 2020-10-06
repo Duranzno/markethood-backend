@@ -1,11 +1,7 @@
 import { gql } from 'apollo-server';
-import {
-  ApolloServerTestClient,
-  createTestClient,
-} from 'apollo-server-testing';
-import anyTest, { TestInterface } from 'ava';
 
-import { getApolloConfig, setupServer } from './graphql';
+import { test, testApolloClient } from './utils/testing.utils';
+
 const query = gql`
   {
     books {
@@ -14,9 +10,7 @@ const query = gql`
     }
   }
 `;
-const test = anyTest as TestInterface<{
-  testClient: ApolloServerTestClient;
-}>;
+
 const expected = {
   books: [
     {
@@ -29,14 +23,13 @@ const expected = {
     },
   ],
 };
-let testClient: ApolloServerTestClient;
 test.before(async (t) => {
-  const server = await setupServer(getApolloConfig());
-  testClient = createTestClient(server);
-  t.context.testClient = testClient;
+  t.context.testClient = await testApolloClient();
 });
-test('Basic Query', async (t) => {
-  const { data } = await t.context.testClient.query({ query });
+test.skip('Basic Query', async (t) => {
+  const { data, errors } = await t.context.testClient.query({ query });
+  t.falsy(errors, 'Errors have been thrown');
+
   t.assert(data, 'No data coming from query call');
   t.deepEqual(data?.books, expected.books, 'Queried A different value');
 });

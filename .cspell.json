@@ -17,14 +17,17 @@
         "globby",
         "Markethood",
         "markethood",
+        "Middlewares",
         "mkdir",
         "mongodb",
         "prettierignore",
         "sandboxed",
         "transpiled",
+        "typedi",
         "typedoc",
         "Typegoose",
-        "untracked"
+        "untracked",
+        "Watchlist"
     ],
     "flagWords": [],
     "ignorePaths": [

@@ -1,4 +1,8 @@
-// require("dotenv").config();
+import { logger } from '@typegoose/typegoose/lib/logSettings';
+import dotenv from 'dotenv';
+
+import { getMongoConnection } from './database/connection';
+import { getApolloConfig, setupServer } from './graphql';
 /**
  * Running function for the entire server.
  * The project is currently divided in two entities, those related to DB operations and those that configure the Apollo Configuration
@@ -7,14 +11,15 @@
  * * Running the Apollo server with that configuration
  * * Initializing the connection to MongoDB and enabling the correct use of Typegoose
  */
-import { getApolloConfig, setupServer } from './graphql';
 
 async function run() {
   try {
-    const config = getApolloConfig();
+    await getMongoConnection();
+    const config = await getApolloConfig();
     setupServer(config);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 }
+dotenv.config();
 run();

@@ -9,12 +9,12 @@
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "start":"ts-node src/run.ts",
+    "start": "ts-node src/run.ts",
     "build": "run-p build:*",
     "build:main": "tsc -p tsconfig.json",
     "build:module": "tsc -p tsconfig.module.json",
     "fix": "run-s fix:*",
-    "heroku":"heroku local -p 4000",
+    "heroku": "heroku local -p 4000",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
     "test": "run-s build test:*",
@@ -43,13 +43,18 @@
   "dependencies": {
     "@typegoose/typegoose": "^7.4.1",
     "@types/graphql": "^14.5.0",
+    "@types/slug": "^0.9.1",
     "apollo-server": "^2.18.2",
     "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
     "graphql": "^15.3.0",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.7",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^1.0.0"
+    "slug": "^3.3.5",
+    "type-graphql": "^1.0.0",
+    "typedi": "^0.8.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
@@ -113,9 +118,9 @@
   "prettier": {
     "singleQuote": true
   },
-  "husky":{
-    "hooks":{
-      "pre-commit":"yarn fix"
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn fix"
     }
   },
   "nyc": {

@@ -1,13 +1,7 @@
 import 'reflect-metadata';
-import {
-  // Arg,
-  Args,
-  Mutation,
-  Query,
-  Resolver,
-} from 'type-graphql';
+import { Arg, Args, Mutation, Query, Resolver } from 'type-graphql';
 
-import { ProductClass, ProductModel } from '../../database';
+import { genSlug, ProductClass, ProductModel } from '../../database';
 
 @Resolver(() => ProductClass)
 export class ProductQuery {
@@ -15,14 +9,6 @@ export class ProductQuery {
   async products() {
     return await ProductModel.find();
   }
-
-  // @Query(() => Product)
-  // async Product(
-  //   @Arg("title", { nullable: true }) title?: String,
-  //   @Arg("id", { nullable: true }) id?: String
-  // ) {
-  //   return await []
-  // }
 }
 @Resolver(() => ProductClass)
 export class ProductMutation {
@@ -31,8 +17,27 @@ export class ProductMutation {
     return await (await ProductModel.create(product)).save();
   }
 
-  // @Mutation(() => Product)
-  // async updateProduct(@Args() product: Product) {
-  //   return await {}
-  // }
+  @Mutation(() => ProductClass)
+  async updateProduct(@Args() product: ProductClass) {
+    const p = await ProductModel.findOneAndUpdate(
+      { slug: product.slug },
+      product,
+      {
+        useFindAndModify: false,
+        new: true,
+      }
+    );
+    if (p) {
+      const newSlug = genSlug(p.title, p._id);
+      p.set({ slug: newSlug });
+      return await p.save();
+    } else {
+      return Error("Product doesn't exists"); //TODO: ERROR HANDLING FOR APOLLO
+    }
+  }
+  @Mutation(() => String)
+  async deleteProduct(@Arg('slug') slug: string) {
+    await ProductModel.deleteOne({ slug });
+    return slug;
+  }
 }

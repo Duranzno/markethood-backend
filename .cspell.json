@@ -28,6 +28,7 @@
         "typedoc",
         "Typegoose",
         "untracked",
+        "virtuals",
         "Watchlist"
     ],
     "flagWords": [],

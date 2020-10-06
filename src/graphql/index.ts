@@ -1,2 +1,2 @@
-export * from './apollo-config';
+export * from './apollo.config';
 export * from './server';

@@ -1,8 +1,10 @@
 // import * as path from "path";
 
+import { ObjectId } from 'mongodb';
 import { buildSchema } from 'type-graphql';
 import { Container as container } from 'typedi';
 
+import { ObjectIdScalar } from './object-id.scalar';
 import {
   // CommunityMutations,
   // UserMutations,
@@ -15,8 +17,6 @@ import {
 } from './resolvers';
 // import { authChecker } from "./auth"
 // import { ResolveTime } from './middleware';
-// import { ObjectId } from "mongodb";
-// import { ObjectIdScalar } from './scalars';
 
 export const createSchema = async () =>
   await buildSchema({
@@ -30,7 +30,12 @@ export const createSchema = async () =>
       // WatchlistMutations,
       // WatchlistQuery
     ],
-    // scalarsMap: [{ type: ObjectId, scalar: ObjectIdScalar }],
+    scalarsMap: [
+      {
+        type: ObjectId,
+        scalar: ObjectIdScalar,
+      },
+    ],
     // emitSchemaFile: path.resolve(__dirname, "schema.gql"),
     // globalMiddlewares: [ResolveTime],
     // authChecker,

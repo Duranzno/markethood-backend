@@ -16,7 +16,7 @@ export const getMongoConnection = async () => {
   const dbUri: string = defaultDb as string;
   try {
     const db = await connect(dbUri, mongoConfig);
-    dbLogger.info('Connected Successfully');
+    dbLogger.info('Connected Successfully to the MongoDB database');
     isConnected = db.connection.readyState === 1; // 1 for connected
   } catch (error) {
     dbLogger.error('db error:', error);

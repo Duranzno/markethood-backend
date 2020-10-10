@@ -17,7 +17,9 @@ import {
 } from './resolvers';
 // import { authChecker } from "./auth"
 // import { ResolveTime } from './middleware';
-
+/**
+ * Schema Creator to convert Typegoose to a generic Apollo schema
+ */
 export const createSchema = async () =>
   await buildSchema({
     resolvers: [

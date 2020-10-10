@@ -1,6 +1,8 @@
 import { GraphQLScalarType, Kind } from 'graphql';
 import { ObjectId } from 'mongodb';
-
+/**
+ * Graphql Workaround to use the Mongoose ObjectId as a ScalarType in Apollo
+ */
 export const ObjectIdScalar = new GraphQLScalarType({
   name: 'ObjectId',
   description: 'Mongo object id scalar type',

@@ -76,7 +76,7 @@ test.serial('Mutate to register a Product', async (t) => {
   //Acting
   const res = await t.context.testClient.mutate({
     mutation: registerMutation,
-    variables: expectedProduct,
+    variables: { ...expectedProduct },
   });
   const { data, errors } = res;
 
@@ -96,7 +96,6 @@ test.serial('Query All Products', async (t) => {
 
   //Acting
   const { errors, data } = await t.context.testClient.query({ query });
-
   //Asserting
   t.falsy(errors, 'Errors have been thrown');
   t.assert(data, 'No data coming from query call');

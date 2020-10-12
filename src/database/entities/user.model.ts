@@ -21,7 +21,7 @@ import { ProductClass, ProductModel } from './product.model';
 @ArgsType()
 @ObjectType({ description: 'Neighbors' })
 export class UserClass {
-  @Field()
+  @Field({ nullable: true })
   readonly _id?: ObjectId;
 
   @Field()
@@ -52,14 +52,15 @@ export class UserClass {
   })
   password!: string;
 
-  @Field()
+  @Field({ nullable: true })
   @prop({})
   payment?: string;
 
-  @Field()
+  @Field({ nullable: true })
   @prop({})
   pretty_location?: string;
 
+  // @Field({ nullable: true })
   @prop({ ref: () => ProductClass, default: [] })
   public products?: Ref<ProductClass>[];
 

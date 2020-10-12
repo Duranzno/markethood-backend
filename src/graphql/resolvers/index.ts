@@ -1,1 +1,2 @@
-export * from './product.resolvers';
+export * from './product.resolver';
+export * from './user.resolver';

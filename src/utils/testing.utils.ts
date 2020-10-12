@@ -45,8 +45,8 @@ export const mockUser = () => ({
   email: c.email(),
   phone: c.phone(),
   password: c.guid(),
-  payment: c.paragraph(),
-  pretty_location: c.paragraph(),
+  // payment: c.paragraph(),
+  // pretty_location: c.paragraph(),
 });
 export const mockProduct = () => ({
   title: c.sentence({ words: 5 }),

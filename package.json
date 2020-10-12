@@ -22,6 +22,7 @@
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
     "test:spelling": "cspell \"{README.md,.github/*.md,src/**/*.ts}\"",
     "test:unit": "nyc --silent ava",
+    "watch:run": "nodemon build/main/run.js",
     "watch:build": "tsc -p tsconfig.json -w",
     "watch:test": "nyc --silent ava --watch",
     "cov": "run-s build test:unit cov:html cov:lcov && open-cli coverage/index.html",
@@ -79,6 +80,7 @@
     "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
     "mongodb-memory-server": "^6.9.0",
+    "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "nyc": "^15.1.0",
     "open-cli": "^6.0.1",
@@ -130,5 +132,14 @@
     "exclude": [
       "**/*.spec.js"
     ]
+  },
+  "nodemonConfig": {
+    "ignore": ["test/*", "docs/*","*.spec*"],
+    "verbose":true,
+    "ext": "js,ts",
+    "watch":[
+      "build/main/**/*.js"
+    ],
+    "delay": "2500"
   }
 }

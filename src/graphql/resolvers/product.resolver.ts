@@ -4,14 +4,14 @@ import { Arg, Args, Mutation, Query, Resolver } from 'type-graphql';
 import { genSlug, ProductClass, ProductModel } from '../../database';
 
 @Resolver(() => ProductClass)
-export class ProductQuery {
+export class ProductQueries {
   @Query(() => [ProductClass])
   async products() {
     return await ProductModel.find();
   }
 }
 @Resolver(() => ProductClass)
-export class ProductMutation {
+export class ProductMutations {
   @Mutation(() => ProductClass)
   async registerProduct(@Args() product: ProductClass) {
     return await (await ProductModel.create(product)).save();

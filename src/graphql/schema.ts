@@ -7,11 +7,11 @@ import { Container as container } from 'typedi';
 import { ObjectIdScalar } from './object-id.scalar';
 import {
   // CommunityMutations,
-  // UserMutations,
-  ProductMutation,
-  ProductQuery,
+  ProductMutations,
+  ProductQueries,
   // CommunityQuery,
-  // UserQuery,
+  UserMutations,
+  UserQueries,
   // WatchlistMutations,
   // WatchlistQuery
 } from './resolvers';
@@ -24,11 +24,11 @@ export const createSchema = async () =>
   await buildSchema({
     resolvers: [
       // CommunityMutations,
-      // UserMutations,
-      ProductMutation,
-      ProductQuery,
+      UserMutations,
+      ProductMutations,
+      ProductQueries,
       // CommunityQuery,
-      // UserQuery,
+      UserQueries,
       // WatchlistMutations,
       // WatchlistQuery
     ],
